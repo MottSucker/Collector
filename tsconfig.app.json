@@ -5,8 +5,7 @@
     "outDir": "./out-tsc/app",
     "types": [
       "node"
-    ]
-    "types": [],
+    ],
     "paths": {
       "fs": [ "./node_modules/fs-web" ]
     }
