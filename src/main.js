@@ -7,8 +7,6 @@ function createWindow() {
         height: 600,
         webPreferences: {
             nodeIntegration: true,
-=======
->>>>>>> origin/michael/centipedes
         },
     });
 

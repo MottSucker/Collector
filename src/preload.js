@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-const { contextBridge, ipcRenderer } = require('electron')
-const os = require('os');
-const process = require('process');
-
-contextBridge.exposeInMainWorld('electronAPI', {
-
-});
-=======
 window.addEventListener("DOMContentLoaded", () => {
     const replaceText = (selector, text) => {
         const element = document.getElementById(selector);
@@ -17,4 +8,3 @@ window.addEventListener("DOMContentLoaded", () => {
         replaceText(`${type}-version`, process.versions[type]);
     }
 });
->>>>>>> origin/michael/centipedes
