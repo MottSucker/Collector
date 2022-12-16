@@ -15,10 +15,7 @@ function createWindow() {
 
     mainWindow.loadURL(
         url.format({
-            pathname: path.join(
-                __dirname,
-                `../src/app/Modules/Profile/profile.component.html`
-            ),
+            pathname: path.join(__dirname, `./index.html`),
             protocol: "file:",
             slashes: true,
         })
