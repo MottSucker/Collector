@@ -12,11 +12,12 @@ function createWindow() {
             nodeIntegration: true,
         },
     });
-
+    console.log("Creating main window");
+    console.log(__dirname);
     mainWindow.loadURL(
         url.format({
-            pathname: path.join(__dirname, `./index.html`),
             protocol: "file:",
+            pathname: path.join(__dirname, `../dist/Collector/index.html`),
             slashes: true,
         })
     );
