@@ -1,9 +1,13 @@
 <h1>MENU</h1>
-<ul class="main_menu">
-    <li *ngFor="let page of menu_items">
-        <button type="button" (click)="onSelect(page)">
-            <span class="item">{{page.name}}</span>
-        </button>
-    </li>
-</ul>
+<mat-sidenav-container autosize>
+    <mat-sidenav mode="side" opened>
+        <div>
+            <mat-nav-list>
+                <mat-list-item *ngFor="let item of menu_items" routerLink="/{{item.route}}">
+                    <span>{{item.name}}</span>
+                </mat-list-item>
+            </mat-nav-list>
+        </div>
+    </mat-sidenav>
+</mat-sidenav-container>
 <router-outlet></router-outlet>

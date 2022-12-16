@@ -1,17 +1,15 @@
 import { Component } from "@angular/core";
-import { MENU_ITEMS } from "./Constants/MENU_ITEMS";
 import { Router } from "@angular/router";
 import { MatSidenav } from "@angular/material/sidenav";
 
 // Import services
 import { FileService } from "./Services/file-service/file-service.service";
 
-
 interface NavigationItem {
-    name: string,
-    icon: string,
-    svg: boolean,
-    route: string
+    name: string;
+    icon: string;
+    svg: boolean;
+    route: string;
 }
 
 @Component({
@@ -39,13 +37,13 @@ export class AppComponent {
     //When menu button is clicked, navigate to clicked page
     onSelect(page: NavigationItem): void {
         this.selected_page = page; // When button is clicked, update selected page
-        console.log("Navigating to: " + '/' + page.route);
-        this.router.navigate(['/' + page.route]);
+        console.log("Navigating to: " + "/" + page.route);
+        this.router.navigate(["/" + page.route]);
     }
 
     // Retrieves all the menu items from the service
     getMenuItems(): void {
-        console.log("Getting menu items...")
+        console.log("Getting menu items...");
         this.fileService.getMenuItems().subscribe((menuItems) => {
             this.page_names = menuItems;
             menuItems.forEach((item) => {
@@ -55,9 +53,9 @@ export class AppComponent {
                     icon: "",
                     svg: false,
                     route: item,
-                })
-            })
-            console.log("Retrieved menu items...")
+                });
+            });
+            console.log("Retrieved menu items...");
         });
     }
 }
