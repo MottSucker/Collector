@@ -11,7 +11,7 @@
     }
   },
   "files": [
-    "src/main.js"
+    "src/app/app.ts"
   ],
   "include": [
     "src/**/*.d.ts"
