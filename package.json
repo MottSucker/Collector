@@ -24,7 +24,9 @@
     "@angular/router": "^15.0.0",
     "electron": "^22.0.0",
     "fs": "^0.0.1-security",
+    "fs-web": "^1.0.1",
     "path": "^0.12.7",
+    "process": "^0.11.10",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "url": "^0.11.0",
@@ -45,7 +47,7 @@
   },
   "browser": {
     "fs": false,
-    "os": false,
-    "path": false
+    "path": false,
+    "os": false
   }
 }
