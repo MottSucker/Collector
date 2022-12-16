@@ -3,9 +3,16 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
+<<<<<<< HEAD
     "types": [
       "node"
     ]
+=======
+    "types": [],
+    "paths": {
+      "fs": [ "./node_modules/fs-web" ]
+    }
+>>>>>>> origin/michael/centipedes
   },
   "files": [
     "src/app/app.ts"

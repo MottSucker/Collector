@@ -23,8 +23,13 @@
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
     "electron": "^22.0.0",
+<<<<<<< HEAD
+=======
+    "fs": "^0.0.1-security",
+>>>>>>> origin/michael/centipedes
     "fs-web": "^1.0.1",
     "path": "^0.12.7",
+    "process": "^0.11.10",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "url": "^0.11.0",
@@ -42,5 +47,13 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~4.8.2"
+<<<<<<< HEAD
+=======
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+>>>>>>> origin/michael/centipedes
   }
 }
