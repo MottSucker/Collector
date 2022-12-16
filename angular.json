@@ -15,7 +15,7 @@
           "options": {
             "outputPath": "dist/collector",
             "index": "src/index.html",
-            "main": "src/main.js",
+            "main": "src/app/app.ts",
             "polyfills": [
               "zone.js"
             ],
