@@ -2,7 +2,7 @@
 <ul class="main_menu">
     <li *ngFor="let page of menu_items">
         <button type="button" (click)="onSelect(page)">
-            <span class="item">{{page}}</span>
+            <span class="item">{{page.name}}</span>
         </button>
     </li>
 </ul>
