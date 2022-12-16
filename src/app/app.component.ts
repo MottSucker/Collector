@@ -1,9 +1,18 @@
 import { Component } from "@angular/core";
 import { MENU_ITEMS } from "./Constants/MENU_ITEMS";
 import { Router } from "@angular/router";
+import { MatSidenav } from "@angular/material/sidenav";
 
 // Import services
 import { FileService } from "./Services/file-service/file-service.service";
+
+
+interface NavigationItem {
+    name: string,
+    icon: string,
+    svg: boolean,
+    route: string
+}
 
 @Component({
     selector: "app-root",
@@ -13,8 +22,10 @@ import { FileService } from "./Services/file-service/file-service.service";
 export class AppComponent {
     title = "Collector";
 
-    menu_items: string[] = [];
-    selected_page?: string;
+    page_names: string[] = [];
+    menu_items: NavigationItem[] = [];
+
+    selected_page?: NavigationItem;
 
     constructor(private fileService: FileService, private router: Router) {
         console.log("Created main menu component");
@@ -26,16 +37,27 @@ export class AppComponent {
     }
 
     //When menu button is clicked, navigate to clicked page
-    onSelect(page: string): void {
+    onSelect(page: NavigationItem): void {
         this.selected_page = page; // When button is clicked, update selected page
-        console.log("Navigating to: " + '/' + page);
-        this.router.navigate(['/' + page]);
+        console.log("Navigating to: " + '/' + page.route);
+        this.router.navigate(['/' + page.route]);
     }
 
     // Retrieves all the menu items from the service
     getMenuItems(): void {
+        console.log("Getting menu items...")
         this.fileService.getMenuItems().subscribe((menuItems) => {
-            this.menu_items = menuItems;
+            this.page_names = menuItems;
+            menuItems.forEach((item) => {
+                console.log("adding: " + item);
+                this.menu_items.push({
+                    name: item,
+                    icon: "",
+                    svg: false,
+                    route: item,
+                })
+            })
+            console.log("Retrieved menu items...")
         });
     }
 }
