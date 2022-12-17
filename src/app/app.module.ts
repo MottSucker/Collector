@@ -23,6 +23,7 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatTabsModule } from "@angular/material/tabs";
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
     declarations: [
@@ -47,6 +48,7 @@ import { MatTabsModule } from "@angular/material/tabs";
         MatToolbarModule,
         MatDividerModule,
         MatTabsModule,
+        MatIconModule,
     ],
     exports: [
         MatSidenavModule,
@@ -59,6 +61,7 @@ import { MatTabsModule } from "@angular/material/tabs";
         MatToolbarModule,
         MatDividerModule,
         MatTabsModule,
+        MatIconModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

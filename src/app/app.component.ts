@@ -30,6 +30,12 @@ export class AppComponent {
     }
 
     ngOnInit(): void {
+        this.menu_items.push({
+            name: "AWFAWFA",
+            icon: "",
+            svg: true,
+            route: "Profile",
+        });
         this.getMenuItems(); // Load menu items
         console.log("Initialized main menu component");
     }
