@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+<mat-sidenav-container class="mat-sidenav-container" autosize>
+    <mat-sidenav opened mode="side" class="mat-sidenav" #sidenav>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let item of menu_items" routerLink="/{{item.route}}" routerLinkActive="active-list-item">
+                <span class="nav-item-full-width">{{item.name}}</span>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="mat-sidenav-content">
+        <div class="router-content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

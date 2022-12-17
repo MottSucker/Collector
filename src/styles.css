@@ -1,8 +1,20 @@
-body {
-    height: inherit;
-    margin: 0;
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+mat-sidenav {
+    width: 280px;
+    padding: 15px;
 }
 
-app-root {
-    height: inherit;
+.mat-drawer {
+    background-color: #023075;
+    color: #fff
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.toolbar-spacer {
+    flex: 1 1 auto;
 }
