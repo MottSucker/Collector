@@ -4,6 +4,7 @@ import { MatSidenav } from "@angular/material/sidenav";
 
 // Import services
 import { FileService } from "./Services/file-service/file-service.service";
+import { PokemonService } from "./Services/pokeapi-service/pokeapi-service";
 
 interface NavigationItem {
     name: string;
@@ -25,17 +26,15 @@ export class AppComponent {
 
     selected_page?: NavigationItem;
 
-    constructor(private fileService: FileService, private router: Router) {
+    constructor(
+        private pokemonService: PokemonService,
+        private fileService: FileService,
+        private router: Router
+    ) {
         console.log("Created main menu component");
     }
 
     ngOnInit(): void {
-        this.menu_items.push({
-            name: "AWFAWFA",
-            icon: "",
-            svg: true,
-            route: "Profile",
-        });
         this.getMenuItems(); // Load menu items
         console.log("Initialized main menu component");
     }
