@@ -8,6 +8,6 @@ export interface PokemonData {
         front_shiny: string;
         front_female: string;
         front_female_shiny: string;
-    }[];
+    };
     gender?: string;
 }

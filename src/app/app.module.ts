@@ -26,6 +26,7 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatIconModule } from "@angular/material/icon";
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { MatMenuModule } from '@angular/material/menu';
         MatTreeModule,
         MatProgressBarModule,
         MatToolbarModule,
+        MatDialogModule,
         MatDividerModule,
         MatTabsModule,
         MatIconModule,
