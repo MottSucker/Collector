@@ -10,7 +10,7 @@ import { WildComponent } from "./Components/wild/wild.component";
 import { StoreComponent } from "./Components/store/store.component";
 import { SettingsComponent } from "./Components/settings/settings.component";
 import { GuildComponent } from "./Components/guild/guild.component";
-import { PokemonCardComponent } from "./Components/COMMON/pokemon-card/pokemon-card.component"
+import { PokemonCardComponent } from "./Components/.shared_modules/pokemon-card/pokemon-card.component"
 
 // Material modules
 import { MatSidenavModule } from "@angular/material/sidenav";
