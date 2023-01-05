@@ -24,6 +24,11 @@ export class PokemonService {
     getRandomPokemon(): Observable<PokemonData> {
         var randomId = Math.floor(Math.random() * (800 + 1));
         console.log("Sending http request to: " + this.getPokemonLink);
-        return this.http.get<any>(this.getPokemonLink + "/" + randomId);
+        return this.http.get<PokemonData>(this.getPokemonLink + "/" + randomId);
+    }
+
+    getSprite(url: string): Observable<Blob> {
+        console.log("Retrieving image from: " + url);
+        return this.http.get(url, { responseType: "blob" });
     }
 }

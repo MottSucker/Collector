@@ -3,7 +3,20 @@
 <div class="pokemon-list-container" *ngIf="clicked">
     <mat-list>
         <mat-list-item class="pokemon-list-entry" *ngFor="let poke of pokemon">
-            <pokemon-card [pokemon]="poke"></pokemon-card>
+            <pokemon-card [pokemon]="poke" (click)="openPokemonDialog(poke, pokemonSelected)"></pokemon-card>
         </mat-list-item>
     </mat-list>
 </div>
+
+<!-- Card Clicked Template -->
+<ng-template #pokemonSelected>
+    <h2 matDialogTitle style="text-transform: uppercase;">{{selectedPokemon.name}}</h2>
+    <mat-dialog-content>
+        <p>You've encountered {{selectedPokemon.name}}</p>
+        <img [src]="spriteURL" />
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button matDialogClose color="primary">Capture</button>
+        <button mat-button matDialogClose color="primary">Dismiss</button>
+    </mat-dialog-actions>
+</ng-template>

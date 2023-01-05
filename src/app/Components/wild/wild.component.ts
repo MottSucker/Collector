@@ -1,6 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, TemplateRef } from "@angular/core";
 import { PokemonService } from "../../Services/pokeapi-service/pokeapi-service";
-import { PokemonData } from "../../Interfaces/pokemon"
+import { PokemonData } from "../../Interfaces/pokemon";
+import { MatDialog } from '@angular/material/dialog';
+import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
 
 @Component({
     selector: "app-wild",
@@ -16,7 +18,12 @@ export class WildComponent {
     pokemon: PokemonData[] = Array(this.numRolls);
     clicked: boolean = false;
 
-    constructor(private pokemonService: PokemonService) {
+    // Information for 'on click' dialog
+    selectedPokemon: PokemonData;
+    spriteURL: SafeUrl;
+    loading = false;
+
+    constructor(private pokemonService: PokemonService, private dialog: MatDialog, private sanitizer: DomSanitizer) {
         console.log("Created wild component");
     }
 
@@ -38,5 +45,24 @@ export class WildComponent {
             });
         }
         
+    }
+
+    openPokemonDialog(poke: PokemonData, templateRef: TemplateRef<any>) {
+        this.loading = true;
+
+        console.log("Selected pokemon data: ");
+        console.log(poke);
+        // Get the pokemon sprite to display
+        this.pokemonService.getSprite(poke.sprites.front_default).subscribe((sprite) => {
+
+            // Create a url from the returned blob that can be displayed in html.
+            this.spriteURL = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(sprite));
+            this.selectedPokemon = poke;
+            this.loading = false;
+            this.dialog.open(templateRef);
+
+            console.log("Sprite data recieved: ");
+            console.log(sprite);
+        });
     }
 }
