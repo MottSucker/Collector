@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { PokemonData } from "../../../Interfaces/pokemon"
 
 @Component({
@@ -6,17 +6,20 @@ import { PokemonData } from "../../../Interfaces/pokemon"
     templateUrl: "./pokemon-card.component.html",
     styleUrls: ["./pokemon-card.component.css"],
 })
-export class PokemonCardComponent {
+export class PokemonCardComponent implements OnInit {
 
     @Input() pokemon: PokemonData;
     validatedPokemonData: PokemonData;
+    pokemonReceived: boolean = false;
 
     constructor() {
-        console.log("Card data: ");
-        console.log(this.pokemon);
     }
 
-    pokemonRecieved(): boolean {
-        return (typeof this.pokemon != 'undefined');
+    ngOnInit() {
+        console.log("Card data: ");
+        console.log(this.pokemon);
+        if (this.pokemon != null) {
+            this.pokemonReceived = true;
+        }
     }
 }

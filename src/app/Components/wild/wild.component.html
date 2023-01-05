@@ -1,7 +1,9 @@
 <h1>The Wild</h1>
 <button (click)="getRandomPokemon()">PRESS FOR A RANDOM POKEMON TO BE LOGGED</button>
-<div *ngIf="clicked">
-    <div *ngFor="let poke of pokemon">
-        <pokemon-card [pokemon]="poke"></pokemon-card>
-    </div>
+<div class="pokemon-list-container" *ngIf="clicked">
+    <mat-list>
+        <mat-list-item class="pokemon-list-entry" *ngFor="let poke of pokemon">
+            <pokemon-card [pokemon]="poke"></pokemon-card>
+        </mat-list-item>
+    </mat-list>
 </div>
