@@ -11,6 +11,9 @@ export interface PokemonData {
         front_female: string;
         front_female_shiny: string;
     };
+    stats: {
+        base_stat: number
+    }[];
     spriteURL?: SafeUrl;
     gender?: string;
 }

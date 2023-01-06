@@ -18,10 +18,6 @@ export class PokemonCardComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log("Card data: ");
-        console.log(this.pokemon);
-        console.log("Card sprite: ");
-        console.log(this.pokemon.spriteURL);
         if (this.pokemon != null) {
             this.spriteURL = this.pokemon.spriteURL;
             this.pokemonReceived = true;
