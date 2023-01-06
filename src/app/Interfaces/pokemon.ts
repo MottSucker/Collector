@@ -10,6 +10,14 @@ export interface PokemonData {
         front_shiny: string;
         front_female: string;
         front_female_shiny: string;
+        other: {
+            home: {
+                front_default: string;
+            };
+            'official-artwork': {
+                front_default: string;
+            };
+        };
     };
     stats: {
         base_stat: number
