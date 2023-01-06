@@ -1,5 +1,10 @@
 <mat-card class="pokemon-card" *ngIf="pokemonReceived">
     <mat-card-title>{{pokemon.name}}</mat-card-title>
     <img [src]="spriteURL" />
+    <mat-list class="ranking">
+        <mat-list-item *ngFor="let star of stars">
+            <img [src]="staryuImg" />
+        </mat-list-item>
+    </mat-list>
     <mat-card-subtitle>{{pokemon.id}}</mat-card-subtitle>
 </mat-card>

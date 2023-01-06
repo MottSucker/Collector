@@ -15,6 +15,7 @@ export class WildComponent {
     private numRolls: number = 3;
     private loadedPokemon: number = 0;
 
+    totalOdds: number;
     data: any;
     pokemon: PokemonData[] = Array(this.numRolls);
     clicked: boolean = false;
@@ -51,14 +52,19 @@ export class WildComponent {
 
             // Check base stats
             var total = this.getBaseStatTotal(response);
-            console.log("Rolled " + response.name + ". Odds for success are " + ((200.0/total)*100));
+            console.log("Rolled " + response.name + ". Odds for success are " + ((100.0/total)*100));
             var randomId = Math.floor(Math.random() * (total));
             console.log("Number rolled is " + randomId + " out of " + (total));
 
-            if (randomId < 200 && !response.name.includes("totem")) {
+            if (randomId < 100 && !response.name.includes("totem")) {
                 console.log("SUCCESS!!!");
                 response.name = response.name.charAt(0).toUpperCase() + response.name.slice(1);
                 this.pokemon[this.loadedPokemon] = response;
+                this.pokemon[this.loadedPokemon].ranking = 6 - Math.ceil((100.0/total)*100 / 10);
+                if(this.pokemon[this.loadedPokemon].ranking > 100)
+                {
+                    this.pokemon[this.loadedPokemon].ranking = 100;
+                }
                 this.loadedPokemon++;
                 if (this.loadedPokemon == this.numRolls) {
                     this.loadSprites();

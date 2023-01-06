@@ -24,4 +24,6 @@ export interface PokemonData {
     }[];
     spriteURL?: SafeUrl;
     gender?: string;
+    odds?: number;
+    ranking?: number;
 }
