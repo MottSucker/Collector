@@ -24,12 +24,12 @@ export class PokemonService {
         if (specialChance == 1) {
             //Special pool
             console.log("ROLLING SPECIAL POOL!!!!");
-            var randomId = Math.floor(Math.random() * (this.totalExtraCount + 1));
+            var randomId = Math.floor(Math.random() * (this.totalExtraCount)) + 1;
             randomId += 10000;
             return this.http.get<PokemonData>(this.getPokemonLink + "/" + randomId);
         } else {
             //Regular pool
-            var randomId = Math.floor(Math.random() * (this.totalPokemonCount + 1));
+            var randomId = Math.floor(Math.random() * (this.totalPokemonCount)) + 1;
             return this.http.get<PokemonData>(this.getPokemonLink + "/" + randomId);
 
         }
