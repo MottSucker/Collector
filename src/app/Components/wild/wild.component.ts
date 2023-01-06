@@ -21,7 +21,6 @@ export class WildComponent {
     // Information for 'on click' dialog
     selectedPokemon: PokemonData;
     spriteURL: SafeUrl;
-    loading = false;
 
     constructor(private pokemonService: PokemonService, private dialog: MatDialog, private sanitizer: DomSanitizer) {
         console.log("Created wild component");
@@ -31,38 +30,49 @@ export class WildComponent {
         this.loadedPokemon = 0;
         this.pokemon = Array(this.numRolls);
 
+        this.clicked = false;
+
         // We need seperate counters for the number of times to make the api call (i) and the current pokemon we are loading (this.loadedPokemon).
         // Without this, (i) will increment while logic is still being performed and all references to it will be updated before we want them to.
-        for (let i = 0; i < this.numRolls; i++) {
-            // Make api call to get a random pokemon
-            this.pokemonService.getRandomPokemon().subscribe((response) => {
-                response.name = response.name.charAt(0).toUpperCase() + response.name.slice(1);
-                this.pokemon[this.loadedPokemon] = response;
-                this.loadedPokemon++
-                if (this.loadedPokemon == this.numRolls) {
-                    // All pokemon have been loaded, so we can create their cards.
-                    this.clicked = true;
-                }
-            });
-        }
+        const randomPokemonCall = new Promise<void>((resolve) => { 
+            for (let i = 0; i < this.numRolls; i++) {
+                // Make api call to get a random pokemon
+                this.pokemonService.getRandomPokemon().subscribe((response) => {
+                    response.name = response.name.charAt(0).toUpperCase() + response.name.slice(1);
+                    this.pokemon[this.loadedPokemon] = response;
+                    this.loadedPokemon++;
+                    if (this.loadedPokemon == this.numRolls) {
+                        // All pokemon have been loaded, so we can now load the sprites.
+                        this.loadedPokemon = 0;
+                        resolve();
+                    }
+                });
+            }
+        });
+
+        randomPokemonCall.then(() => {
+
+            for (let i = 0; i < this.pokemon.length; i++) {
+                this.pokemonService.getSprite(this.pokemon[i].sprites.front_default).subscribe((sprite) => {
+
+                    // Create a url from the returned blob that can be displayed in html.
+                    this.pokemon[i].spriteURL = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(sprite));
+                    
+                    this.loadedPokemon++;
+                    if (this.loadedPokemon == this.numRolls) {
+                        // All sprites have been loaded, so we can finalize the cards.
+                        console.log("All pokemon data loaded.");
+                        this.clicked = true;
+                    }
+                });
+            }
+        })
+        // Update all sprites
     }
 
     openPokemonDialog(poke: PokemonData, templateRef: TemplateRef<any>) {
-        this.loading = true;
-
-        console.log("Selected pokemon data: ");
-        console.log(poke);
-        // Get the pokemon sprite to display
-        this.pokemonService.getSprite(poke.sprites.front_default).subscribe((sprite) => {
-
-            // Create a url from the returned blob that can be displayed in html.
-            this.spriteURL = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(sprite));
-            this.selectedPokemon = poke;
-            this.loading = false;
-            this.dialog.open(templateRef);
-
-            console.log("Sprite data recieved: ");
-            console.log(sprite);
-        });
+        this.selectedPokemon = poke;
+        this.spriteURL = poke.spriteURL;
+        this.dialog.open(templateRef);
     }
 }

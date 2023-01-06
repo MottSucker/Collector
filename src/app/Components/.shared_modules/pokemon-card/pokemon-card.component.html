@@ -1,4 +1,5 @@
 <mat-card class="pokemon-card" *ngIf="pokemonReceived">
     <mat-card-title>{{pokemon.name}}</mat-card-title>
+    <img [src]="spriteURL" />
     <mat-card-subtitle>{{pokemon.id}}</mat-card-subtitle>
 </mat-card>
