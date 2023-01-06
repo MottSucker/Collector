@@ -11,14 +11,16 @@
 
     <!-- Card Clicked Template -->
     <ng-template #pokemonSelected>
-        <h2 matDialogTitle style="text-transform: none;">{{selectedPokemon.name}}</h2>
-        <mat-dialog-content>
-            <p>You've encountered {{selectedPokemon.name}}</p>
-            <img [src]="spriteURL" />
-        </mat-dialog-content>
-        <mat-dialog-actions>
-            <button mat-button matDialogClose color="primary">Capture</button>
-            <button mat-button matDialogClose color="primary">Dismiss</button>
-        </mat-dialog-actions>
+        <div class="dialog-container">
+            <h2 matDialogTitle style="text-transform: none;">{{selectedPokemon.name}}</h2>
+            <mat-dialog-content>
+                <p>You've encountered {{selectedPokemon.name}}</p>
+                <img [src]="spriteURL" class="sprite" />
+            </mat-dialog-content>
+            <mat-dialog-actions>
+                <button mat-button matDialogClose color="primary">Capture</button>
+                <button mat-button matDialogClose color="primary">Dismiss</button>
+            </mat-dialog-actions>
+        </div>
     </ng-template>
 </div>
