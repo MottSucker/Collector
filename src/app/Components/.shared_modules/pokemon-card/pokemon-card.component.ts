@@ -13,6 +13,8 @@ export class PokemonCardComponent implements OnInit {
     validatedPokemonData: PokemonData;
     pokemonReceived: boolean = false;
     spriteURL: SafeUrl;
+    stars: number[];
+    staryuImg: string = "assets/staryu.png";
 
     constructor() {
     }
@@ -21,6 +23,7 @@ export class PokemonCardComponent implements OnInit {
         if (this.pokemon != null) {
             this.spriteURL = this.pokemon.spriteURL;
             this.pokemonReceived = true;
+            this.stars = Array(this.pokemon.ranking);
         }
     }
 }
