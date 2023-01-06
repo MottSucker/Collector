@@ -2,11 +2,11 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 :root {
-    --primary: #2A9D8F;
-    --secondary: #264653;
-    --accent-light: #E9C46A;
-    --accent-medium: #F4A261;
-    --accent-dark: #E76F51;
+    --primary: #282D31;
+    --secondary: #212529;
+    --accent-light: #969696;
+    --accent-medium: #3D6D9C;
+    --accent-dark: #3C4146;
 }
 
 mat-sidenav {
