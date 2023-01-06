@@ -1,8 +1,8 @@
 <mat-sidenav-container class="mat-sidenav-container" autosize>
     <mat-sidenav opened mode="side" class="mat-sidenav" #sidenav>
-        <mat-nav-list>
-            <mat-list-item *ngFor="let item of menu_items" routerLink="/{{item.route}}" routerLinkActive="active-list-item">
-                <span class="nav-item-full-width">{{item.name}}</span>
+        <mat-nav-list class="menu-list">
+            <mat-list-item class="list-item" *ngFor="let item of menu_items" routerLink="/{{item.route}}" routerLinkActive="active-list-item">
+                <h2 class="nav-item-full-width">{{item.name}}</h2>
             </mat-list-item>
         </mat-nav-list>
     </mat-sidenav>

@@ -26,6 +26,19 @@ mat-sidenav-content {
 }
 
 .nav-item-full-width {
-    font-size: 20px;
+    font-family: sans-serif;
+    font-size: 40px;
     font-palette: light;
+    color: var(--accent-light);
+}
+
+.list-item {
+    height: auto;
+}
+
+.menu-list {
+    height: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
