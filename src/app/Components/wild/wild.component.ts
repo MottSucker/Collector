@@ -75,9 +75,7 @@ export class WildComponent {
         this.loadedPokemon = 0;
         console.log("Loading sprites");
         for (let i = 0; i < this.pokemon.length; i++) {
-            console.log("OFFICIAL IMAGE URL: ");
-            console.log(this.pokemon[i].sprites.other['official-artwork']);
-            this.pokemonService.getSprite(this.pokemon[i].sprites.other.home.front_default).subscribe((sprite) => {
+            this.pokemonService.getSprite(this.pokemon[i].sprites.other['official-artwork'].front_default).subscribe((sprite) => {
 
                 // Create a url from the returned blob that can be displayed in html.
                 this.pokemon[i].spriteURL = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(sprite));
