@@ -3,5 +3,23 @@
 }
 
 .pokemon-list-container {
-    width: 200px;
+    width: -webkit-fill-available;
+}
+
+h1 {
+    font-weight: 900;
+    font-family: sans-serif;
+}
+
+.encounter-button {
+    font-weight: 900;
+    font-family: sans-serif;
+}
+
+.wild-page {
+    margin-left: 40px;
+}
+
+.encounters {
+    display: flex;
 }

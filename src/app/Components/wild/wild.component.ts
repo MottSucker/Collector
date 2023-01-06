@@ -33,9 +33,10 @@ export class WildComponent {
 
         // We need seperate counters for the number of times to make the api call (i) and the current pokemon we are loading (this.loadedPokemon).
         // Without this, (i) will increment while logic is still being performed and all references to it will be updated before we want them to.
-        for (var i = 0; i < this.numRolls; i++) {
+        for (let i = 0; i < this.numRolls; i++) {
             // Make api call to get a random pokemon
             this.pokemonService.getRandomPokemon().subscribe((response) => {
+                response.name = response.name.charAt(0).toUpperCase() + response.name.slice(1);
                 this.pokemon[this.loadedPokemon] = response;
                 this.loadedPokemon++
                 if (this.loadedPokemon == this.numRolls) {
@@ -44,7 +45,6 @@ export class WildComponent {
                 }
             });
         }
-        
     }
 
     openPokemonDialog(poke: PokemonData, templateRef: TemplateRef<any>) {

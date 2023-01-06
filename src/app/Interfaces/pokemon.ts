@@ -1,3 +1,5 @@
+import { SafeUrl } from "@angular/platform-browser";
+
 export interface PokemonData {
     id: number;
     name: string;
@@ -9,5 +11,6 @@ export interface PokemonData {
         front_female: string;
         front_female_shiny: string;
     };
+    spriteURL?: SafeUrl;
     gender?: string;
 }

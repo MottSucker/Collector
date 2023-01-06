@@ -1,22 +1,24 @@
-<h1>The Wild</h1>
-<button (click)="getRandomPokemon()">PRESS FOR A RANDOM POKEMON TO BE LOGGED</button>
-<div class="pokemon-list-container" *ngIf="clicked">
-    <mat-list>
-        <mat-list-item class="pokemon-list-entry" *ngFor="let poke of pokemon">
-            <pokemon-card [pokemon]="poke" (click)="openPokemonDialog(poke, pokemonSelected)"></pokemon-card>
-        </mat-list-item>
-    </mat-list>
-</div>
+<div class="wild-page">
+    <h1>The Wild</h1>
+    <button mat-raised-button class="encounter-button" (click)="getRandomPokemon()">PRESS TO ENCOUNTER</button>
+    <div class="pokemon-list-container" *ngIf="clicked">
+        <mat-list class="encounters">
+            <mat-list-item class="pokemon-list-entry" *ngFor="let poke of pokemon">
+                <pokemon-card [pokemon]="poke" (click)="openPokemonDialog(poke, pokemonSelected)"></pokemon-card>
+            </mat-list-item>
+        </mat-list>
+    </div>
 
-<!-- Card Clicked Template -->
-<ng-template #pokemonSelected>
-    <h2 matDialogTitle style="text-transform: uppercase;">{{selectedPokemon.name}}</h2>
-    <mat-dialog-content>
-        <p>You've encountered {{selectedPokemon.name}}</p>
-        <img [src]="spriteURL" />
-    </mat-dialog-content>
-    <mat-dialog-actions>
-        <button mat-button matDialogClose color="primary">Capture</button>
-        <button mat-button matDialogClose color="primary">Dismiss</button>
-    </mat-dialog-actions>
-</ng-template>
+    <!-- Card Clicked Template -->
+    <ng-template #pokemonSelected>
+        <h2 matDialogTitle style="text-transform: none;">{{selectedPokemon.name}}</h2>
+        <mat-dialog-content>
+            <p>You've encountered {{selectedPokemon.name}}</p>
+            <img [src]="spriteURL" />
+        </mat-dialog-content>
+        <mat-dialog-actions>
+            <button mat-button matDialogClose color="primary">Capture</button>
+            <button mat-button matDialogClose color="primary">Dismiss</button>
+        </mat-dialog-actions>
+    </ng-template>
+</div>
