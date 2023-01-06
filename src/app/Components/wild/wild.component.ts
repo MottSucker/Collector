@@ -39,6 +39,7 @@ export class WildComponent {
     }
 
     openPokemonDialog(poke: PokemonData, templateRef: TemplateRef<any>) {
+        console.log(poke);
         this.selectedPokemon = poke;
         this.spriteURL = poke.spriteURL;
         this.dialog.open(templateRef);
@@ -54,7 +55,7 @@ export class WildComponent {
             var randomId = Math.floor(Math.random() * (total));
             console.log("Number rolled is " + randomId + " out of " + (total));
 
-            if (randomId < 200) {
+            if (randomId < 200 && !response.name.includes("totem")) {
                 console.log("SUCCESS!!!");
                 response.name = response.name.charAt(0).toUpperCase() + response.name.slice(1);
                 this.pokemon[this.loadedPokemon] = response;
@@ -74,7 +75,9 @@ export class WildComponent {
         this.loadedPokemon = 0;
         console.log("Loading sprites");
         for (let i = 0; i < this.pokemon.length; i++) {
-            this.pokemonService.getSprite(this.pokemon[i].sprites.front_default).subscribe((sprite) => {
+            console.log("OFFICIAL IMAGE URL: ");
+            console.log(this.pokemon[i].sprites.other['official-artwork']);
+            this.pokemonService.getSprite(this.pokemon[i].sprites.other.home.front_default).subscribe((sprite) => {
 
                 // Create a url from the returned blob that can be displayed in html.
                 this.pokemon[i].spriteURL = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(sprite));
