@@ -12,6 +12,7 @@ import { Subscription } from "rxjs";
 })
 export class WildComponent {
 
+    private oddsMultiplier: number = 100.0;
     private numRolls: number = 3;
     private loadedPokemon: number = 0;
 
@@ -51,11 +52,11 @@ export class WildComponent {
 
             // Check base stats
             var total = this.getBaseStatTotal(response);
-            console.log("Rolled " + response.name + ". Odds for success are " + ((200.0/total)*100));
+            console.log("Rolled " + response.name + ". Odds for success are " + ((this.oddsMultiplier / total) * 100));
             var randomId = Math.floor(Math.random() * (total));
             console.log("Number rolled is " + randomId + " out of " + (total));
 
-            if (randomId < 200 && !response.name.includes("totem")) {
+            if (randomId < this.oddsMultiplier && !response.name.includes("totem")) {
                 console.log("SUCCESS!!!");
                 response.name = response.name.charAt(0).toUpperCase() + response.name.slice(1);
                 this.pokemon[this.loadedPokemon] = response;
