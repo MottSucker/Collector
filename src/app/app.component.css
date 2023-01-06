@@ -1,7 +1,9 @@
 
 mat-sidenav-container {
-  height: calc(100vh);
-  display: flex;
+    background-color: var(--primary);
+    height: -webkit-fill-available;
+    display: flex;
+    margin: -8px;
 }
 
 mat-sidenav-content {
@@ -13,10 +15,17 @@ mat-sidenav-content {
 }
 
 .mat-sidenav {
-  overflow-y: hidden;
-  transform: scale(1,1);
+    overflow-y: hidden;
+    transform: scale(1,1);
+    background-color: var(--secondary);
+    box-shadow: 0px 0px 10px 0px #000f, 0 1px 1px 0 #000f, 0 1px 3px 0 #000f;
 }
 
 .mat-divider {
   border-top-width: 2px;
+}
+
+.nav-item-full-width {
+    font-size: 20px;
+    font-palette: light;
 }

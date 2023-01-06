@@ -1,6 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+:root {
+    --primary: #2A9D8F;
+    --secondary: #264653;
+    --accent-light: #E9C46A;
+    --accent-medium: #F4A261;
+    --accent-dark: #E76F51;
+}
+
 mat-sidenav {
     width: 280px;
     padding: 15px;
