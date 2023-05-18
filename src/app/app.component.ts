@@ -6,6 +6,9 @@ import { MatSidenav } from "@angular/material/sidenav";
 import { FileService } from "./Services/file-service/file-service.service";
 import { PokemonService } from "./Services/pokeapi-service/pokeapi-service";
 
+// Import database and controllers
+import { MongoDB } from "./Database/mongodb"
+
 interface NavigationItem {
     name: string;
     icon: string;
@@ -29,13 +32,15 @@ export class AppComponent {
     constructor(
         private pokemonService: PokemonService,
         private fileService: FileService,
-        private router: Router
+        private router: Router,
+        private database: MongoDB,
     ) {
         console.log("Created main menu component");
     }
 
     ngOnInit(): void {
         this.getMenuItems(); // Load menu items
+        this.initDatabase();
         console.log("Initialized main menu component");
     }
 
@@ -62,5 +67,9 @@ export class AppComponent {
             });
             console.log("Retrieved menu items...");
         });
+    }
+
+    initDatabase(): void {
+        this.database.connect();
     }
 }
