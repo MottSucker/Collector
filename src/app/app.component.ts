@@ -5,6 +5,7 @@ import { MatSidenav } from "@angular/material/sidenav";
 // Import services
 import { FileService } from "./Services/file-service/file-service.service";
 import { PokemonService } from "./Services/pokeapi-service/pokeapi-service";
+import { UserData } from "./Interfaces/userdata";
 
 interface NavigationItem {
     name: string;
@@ -24,6 +25,8 @@ export class AppComponent {
     page_names: string[] = [];
     menu_items: NavigationItem[] = [];
 
+    private userData: UserData;
+
     selected_page?: NavigationItem;
 
     constructor(
@@ -36,6 +39,14 @@ export class AppComponent {
 
     ngOnInit(): void {
         this.getMenuItems(); // Load menu items
+        /*
+        this.fileService.loadUserData().then((user) => {
+            this.userData = user;
+            console.log("User data: ");
+            console.log(this.userData);
+        });
+        */
+        this.fileService.createUserData();
         console.log("Initialized main menu component");
     }
 
