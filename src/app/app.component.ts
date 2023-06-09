@@ -39,14 +39,20 @@ export class AppComponent {
 
     ngOnInit(): void {
         this.getMenuItems(); // Load menu items
-        /*
-        this.fileService.loadUserData().then((user) => {
-            this.userData = user;
-            console.log("User data: ");
-            console.log(this.userData);
+
+        // First update user data with some dummy data in case the file doesnt exist.
+        this.fileService.updateUserData({
+            username: "",
+            pokemon: []
+        }).then(() => {
+            // Once we're sure the file is there, we can load it.
+            this.fileService.loadUserData().then((user) => {
+                this.userData = user;
+                console.log("User data: ");
+                console.log(this.userData);
+            });
         });
-        */
-        this.fileService.createUserData();
+        
         console.log("Initialized main menu component");
     }
 

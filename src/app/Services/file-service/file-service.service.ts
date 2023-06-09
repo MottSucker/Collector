@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { MENU_ITEMS } from "../../Constants/MENU_ITEMS";
 import { from, Observable, of } from "rxjs";
-import * as fs from "fs";
 import { UserData } from "../../Interfaces/userdata";
 
 @Injectable({
@@ -21,46 +20,26 @@ export class FileService {
     
     // Loads the user save data. If it's not there, makes it.
     loadUserData(): Promise<UserData> {
-
+        console.log("Loading user data.");
         var user: UserData;
-        var dataPromise: Promise<UserData>;
-
-        // Read user data from the json
-        var readDataPromise = new Promise<UserData>((resolve, reject) => {
-            console.log("Reading User data from file");
-            try {
-                fs.readFile(this.defaultUserDataPath, (err, userData) => {
-                    console.log("File has been read.");
-                    user = JSON.parse(userData.toString());
-                    resolve(user);
-                });
-            } catch(err) {
-                throw err;
-            }
-
+        var loadUserPromise = new Promise<UserData>((resolve, reject) => {
+            window.electronAPI.readFile(this.defaultUserDataPath).then((userData) => {
+                console.log("Got user data: " + userData);
+                user = JSON.parse(userData);
+                resolve(user);
+            })
         })
 
-        return readDataPromise;
-    }
-
-    // Maybe this shoudl return something but I really dont care anymore I hate async
-    createUserData(): void {
-        console.log("Creating user data file");
-        fs.mkdir(this.defaultUserDataPath, { recursive: true }, (err, path) => {
-            console.log("Created directory: " + path)
-            if (err) throw err;
-        });
+        return loadUserPromise;
     }
 
 
-    async updateUserData(userData: UserData): Promise<void> {
+    updateUserData(userData: UserData): Promise<boolean> {
+        console.log("Updating user data");
+
         var userDataString = JSON.stringify(userData);
-        await fs.writeFile('user.json', userDataString, err => {
-            if (err) {
-                throw err
-            }
-            console.log('JSON data is saved.')
-        })
+        return window.electronAPI.saveFile({ filePath: this.defaultUserDataPath, data: userDataString })
+
     }
     
 }

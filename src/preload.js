@@ -1,10 +1,12 @@
-window.addEventListener("DOMContentLoaded", () => {
-    const replaceText = (selector, text) => {
-        const element = document.getElementById(selector);
-        if (element) element.innerText = text;
-    };
+const { contextBridge, ipcRenderer } = require('electron');
 
-    for (const type of ["chrome", "node", "electron"]) {
-        replaceText(`${type}-version`, process.versions[type]);
+contextBridge.exposeInMainWorld('electronAPI', {
+    saveFile(data) {
+        console.log("Invoking saveFile")
+        return ipcRenderer.invoke('save-file', data)
+    },
+    readFile(data) {
+        console.log("Invoking readFile")
+        return ipcRenderer.invoke('read-file', data)
     }
-});
+})
