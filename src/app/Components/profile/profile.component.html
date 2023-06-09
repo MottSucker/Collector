@@ -1,1 +1,10 @@
-<p>profile works!</p>
+<div class="profile-page">
+    <h1>Profile</h1>
+    <div class="user-pokemon" *ngIf="!loading">
+        <mat-grid-list cols="5" rowHeight="1:1.25" class="profile-card-grid">
+            <mat-grid-tile class="pokemon-list-entry" *ngFor="let pokemon of userData.pokemon">
+                <profile-card [pokemon]="pokemon" class="card"></profile-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</div>

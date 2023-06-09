@@ -1,0 +1,16 @@
+
+.profile-page {
+    margin-left: 40px;
+}
+
+.pokemon-list-container {
+    width: -webkit-fill-available;
+}
+
+.card{
+    height:inherit;
+}
+
+.pokemon-list-entry {
+    height: 170px;
+}
