@@ -11,6 +11,7 @@ import { StoreComponent } from "./Components/store/store.component";
 import { SettingsComponent } from "./Components/settings/settings.component";
 import { GuildComponent } from "./Components/guild/guild.component";
 import { PokemonCardComponent } from "./Components/.shared_modules/pokemon-card/pokemon-card.component"
+import { ProfileCardComponent } from "./Components/.shared_modules/profile-card/profile-card.component"
 
 // Material modules
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -27,6 +28,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatGridListModule } from '@angular/material/grid-list'; 
 
 
 @NgModule({
@@ -39,6 +41,7 @@ import { MatDialogModule } from '@angular/material/dialog';
         SettingsComponent,
         GuildComponent,
         PokemonCardComponent,
+        ProfileCardComponent,
     ],
     imports: [
         BrowserModule,
@@ -58,6 +61,7 @@ import { MatDialogModule } from '@angular/material/dialog';
         HttpClientModule,
         MatCardModule,
         MatMenuModule,
+        MatGridListModule,
     ],
     exports: [
         MatSidenavModule,
@@ -73,6 +77,7 @@ import { MatDialogModule } from '@angular/material/dialog';
         MatIconModule,
         MatCardModule,
         MatMenuModule,
+        MatGridListModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

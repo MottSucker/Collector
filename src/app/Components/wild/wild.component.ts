@@ -1,9 +1,11 @@
 import { Component, TemplateRef } from "@angular/core";
 import { PokemonService } from "../../Services/pokeapi-service/pokeapi-service";
+import { FileService } from "../../Services/file-service/file-service.service"
 import { PokemonData } from "../../Interfaces/pokemon";
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
 import { Subscription } from "rxjs";
+import { UserData } from "../../Interfaces/userdata";
 
 @Component({
     selector: "app-wild",
@@ -15,6 +17,7 @@ export class WildComponent {
     private numRolls: number = 3;
     private loadedPokemon: number = 0;
 
+    userData: UserData;
     totalOdds: number;
     data: any;
     pokemon: PokemonData[] = Array(this.numRolls);
@@ -24,8 +27,12 @@ export class WildComponent {
     selectedPokemon: PokemonData;
     spriteURL: SafeUrl;
 
-    constructor(private pokemonService: PokemonService, private dialog: MatDialog, private sanitizer: DomSanitizer) {
+    constructor(private pokemonService: PokemonService, private fileService: FileService, private dialog: MatDialog, private sanitizer: DomSanitizer,) {
         console.log("Created wild component");
+        
+        this.fileService.loadUserData().then((user) => {
+            this.userData = user;
+        })
     }
 
     getRandomPokemon() {
@@ -60,7 +67,7 @@ export class WildComponent {
                 console.log("SUCCESS!!!");
                 response.name = response.name.charAt(0).toUpperCase() + response.name.slice(1);
                 this.pokemon[this.loadedPokemon] = response;
-                this.pokemon[this.loadedPokemon].ranking = 6 - Math.ceil((100.0/total)*100 / 10);
+                this.pokemon[this.loadedPokemon].ranking = 7 - Math.ceil((100.0/total)*100 / 10);
                 if(this.pokemon[this.loadedPokemon].ranking > 100)
                 {
                     this.pokemon[this.loadedPokemon].ranking = 100;
@@ -85,7 +92,7 @@ export class WildComponent {
 
                 // Create a url from the returned blob that can be displayed in html.
                 this.pokemon[i].spriteURL = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(sprite));
-
+                console.log("Created safe url: " + this.pokemon[i].spriteURL);
                 this.loadedPokemon++;
                 if (this.loadedPokemon == this.numRolls) {
 
@@ -101,5 +108,11 @@ export class WildComponent {
             total += pokemonData.stats[i].base_stat;
         }
         return total;
+    }
+
+    capturePokemon(): void {
+        console.log("Capturing " + this.selectedPokemon.name);
+        this.userData.pokemon.push(this.selectedPokemon);
+        this.fileService.updateUserData(this.userData)
     }
 }

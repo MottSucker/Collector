@@ -29,14 +29,12 @@ app.whenReady().then(() => {
         }
     });
     ipcMain.handle('read-file', (event, args) => {
-        console.log("Main read file: " + args)
         let promise = new Promise((resolve, _) => {
             try {
                 console.log("Calling fs.readFile")
 
                 // Sync vs Async? Likely doesn't matter since it's inside a promise anyway.
                 fs.readFile(args, 'utf8', (err, data) => {
-                    console.log("Read data: " + data)
                     if (err) {
                         console.log("ERROR READING FILE: " + err.message)
                         return resolve(undefined)
@@ -60,7 +58,6 @@ app.whenReady().then(() => {
         return promise
     })
     ipcMain.handle('save-file', (event, args) => {
-        console.log("Main save file: " + args.filePath + " saving data: " + args.data)
         let promise = new Promise((resolve, _) => {
             try {
 

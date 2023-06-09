@@ -24,7 +24,6 @@ export class FileService {
         var user: UserData;
         var loadUserPromise = new Promise<UserData>((resolve, reject) => {
             window.electronAPI.readFile(this.defaultUserDataPath).then((userData) => {
-                console.log("Got user data: " + userData);
                 user = JSON.parse(userData);
                 resolve(user);
             })

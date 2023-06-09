@@ -48,8 +48,6 @@ export class AppComponent {
             // Once we're sure the file is there, we can load it.
             this.fileService.loadUserData().then((user) => {
                 this.userData = user;
-                console.log("User data: ");
-                console.log(this.userData);
             });
         });
         
