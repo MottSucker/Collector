@@ -71,7 +71,25 @@ app.whenReady().then(() => {
                 return resolve(true)
             }
             catch (e) {
-                console.log("Resolving false");
+                console.log("Error saving file: " + e);
+                return resolve(false)
+            }
+        })
+        return promise
+    })
+    ipcMain.handle('file-exists', (event, args) => {
+        let promise = new Promise((resolve, _) => {
+            try {
+
+                if (!fs.existsSync(path.dirname(args))) {
+                    console.log("Directory does not exist")
+                    return resolve(false);
+                } else {
+                    return resolve(true);
+                }
+            }
+            catch (e) {
+                console.log("Error checking if file exists: " + e);
                 return resolve(false)
             }
         })

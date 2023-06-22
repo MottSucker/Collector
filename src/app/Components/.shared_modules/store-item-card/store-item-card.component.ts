@@ -3,8 +3,8 @@ import { StoreItemData } from "../../../Interfaces/store";
 
 @Component({
     selector: "store-item-card",
-    templateUrl: "./store-item.component.html",
-    styleUrls: ["./store-item.component.css"],
+    templateUrl: "./store-item-card.component.html",
+    styleUrls: ["./store-item-card.component.css"],
 })
 export class StoreItemCardComponent implements OnInit {
 

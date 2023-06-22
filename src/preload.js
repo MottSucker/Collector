@@ -8,5 +8,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
     readFile(data) {
         console.log("Invoking readFile")
         return ipcRenderer.invoke('read-file', data)
+    },
+    fileExists(data) {
+        console.log("Invoking fileExists")
+        return ipcRenderer.invoke('file-exists', data)
     }
 })

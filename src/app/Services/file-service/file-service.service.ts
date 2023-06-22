@@ -37,8 +37,12 @@ export class FileService {
         console.log("Updating user data");
 
         var userDataString = JSON.stringify(userData);
-        return window.electronAPI.saveFile({ filePath: this.defaultUserDataPath, data: userDataString })
+        return window.electronAPI.saveFile({ filePath: this.defaultUserDataPath, data: userDataString });
 
+    }
+
+    checkUserDataExists(): Promise<boolean> {
+        return window.electronAPI.fileExists(this.defaultUserDataPath);
     }
     
 }
