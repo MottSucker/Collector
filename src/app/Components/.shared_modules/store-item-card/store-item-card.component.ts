@@ -11,6 +11,7 @@ export class StoreItemCardComponent implements OnInit {
     @Input() item: StoreItemData;
 
     constructor() {
+        console.log("constructing store card")
     }
 
     ngOnInit() {
