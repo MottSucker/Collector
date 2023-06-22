@@ -12,6 +12,8 @@ import { SettingsComponent } from "./Components/settings/settings.component";
 import { GuildComponent } from "./Components/guild/guild.component";
 import { PokemonCardComponent } from "./Components/.shared_modules/pokemon-card/pokemon-card.component"
 import { ProfileCardComponent } from "./Components/.shared_modules/profile-card/profile-card.component"
+import { StoreItemCardComponent } from "./Components/.shared_modules/store-item-card/store-item-card.component"
+
 
 // Material modules
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -42,6 +44,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
         GuildComponent,
         PokemonCardComponent,
         ProfileCardComponent,
+        StoreItemCardComponent,
     ],
     imports: [
         BrowserModule,

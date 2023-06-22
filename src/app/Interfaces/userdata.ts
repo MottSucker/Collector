@@ -4,4 +4,8 @@ import { PokemonData } from "./pokemon";
 export interface UserData {
     username: string;
     pokemon: PokemonData[];
+    upgrades: {
+        pokeballs: number;
+        bait: number;
+    }
 }

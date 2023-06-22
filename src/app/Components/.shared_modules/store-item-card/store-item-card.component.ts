@@ -1,27 +1,19 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { SafeUrl } from "@angular/platform-browser";
-import { PokemonData } from "../../../Interfaces/pokemon"
+import { StoreItemData } from "../../../Interfaces/store";
 
 @Component({
-    selector: "profile-card",
-    templateUrl: "./profile-card.component.html",
-    styleUrls: ["./profile-card.component.css"],
+    selector: "store-item-card",
+    templateUrl: "./store-item.component.html",
+    styleUrls: ["./store-item.component.css"],
 })
 export class StoreItemCardComponent implements OnInit {
 
-    @Input() pokemon: PokemonData;
-    validatedPokemonData: PokemonData;
-    pokemonReceived: boolean = false;
-    spriteURL: SafeUrl;
+    @Input() item: StoreItemData;
 
     constructor() {
     }
 
     ngOnInit() {
-        if (this.pokemon != null) {
-            this.spriteURL = this.pokemon.spriteURL;
-            this.pokemonReceived = true;
-            console.log("Set pokemon card safe url: " + this.spriteURL)
-        }
+
     }
 }
